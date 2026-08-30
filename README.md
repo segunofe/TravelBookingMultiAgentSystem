@@ -2,7 +2,7 @@
 
 A serverless, event-driven multi-agent system built on **AWS Lambda**, **Amazon EventBridge**, **Amazon SQS**, and **AWS Step Functions**. The system automates a travel-booking workflow using a **Planner Agent**, **Weather Agent**, **Flight Manager Agent**, and **Hotel Agent**, with a human-in-the-loop step for high-risk bookings. 
 
-Interestingly, I successfully integrated the **Hotel Agent** to book an hotel for the trip, without disturbing the other agents.
+Interestingly, I successfully integrated the **Hotel Agent** to book an hotel for the trip and send the booking notification to my email, without disrupting the other agents.
 
 <img width="1893" height="586" alt="image" src="https://github.com/user-attachments/assets/1f2f597c-67f9-4152-b6c7-28a96aab5498" />
 
