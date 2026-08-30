@@ -1,0 +1,74 @@
+{
+  "weather_data": {
+    "JFK-SFO": {"temp": 65, "conditions": "clear", "risk": "LOW", "humidity": 45, "wind": "10 mph"},
+    "JFK-LAX": {"temp": 72, "conditions": "sunny", "risk": "LOW", "humidity": 35, "wind": "8 mph"},
+    "JFK-ORD": {"temp": 58, "conditions": "partly cloudy", "risk": "MEDIUM", "humidity": 60, "wind": "15 mph"},
+    "JFK-MIA": {"temp": 78, "conditions": "scattered showers", "risk": "MEDIUM", "humidity": 75, "wind": "12 mph"},
+    "JFK-LAS": {"temp": 85, "conditions": "clear", "risk": "LOW", "humidity": 25, "wind": "5 mph"},
+    "JFK-BOS": {"temp": 55, "conditions": "overcast", "risk": "MEDIUM", "humidity": 65, "wind": "18 mph"},
+    "JFK-DEN": {"temp": 62, "conditions": "clear", "risk": "LOW", "humidity": 30, "wind": "12 mph"},
+    
+    "LAX-SFO": {"temp": 68, "conditions": "foggy", "risk": "MEDIUM", "humidity": 80, "wind": "6 mph"},
+    "LAX-NYC": {"temp": 55, "conditions": "cloudy", "risk": "MEDIUM", "humidity": 70, "wind": "14 mph"},
+    "LAX-ORD": {"temp": 60, "conditions": "clear", "risk": "LOW", "humidity": 40, "wind": "11 mph"},
+    "LAX-MIA": {"temp": 80, "conditions": "thunderstorms", "risk": "HIGH", "humidity": 85, "wind": "20 mph"},
+    "LAX-LAS": {"temp": 88, "conditions": "clear", "risk": "LOW", "humidity": 20, "wind": "7 mph"},
+    "LAX-BOS": {"temp": 52, "conditions": "rain", "risk": "HIGH", "humidity": 75, "wind": "22 mph"},
+    "LAX-DEN": {"temp": 65, "conditions": "partly cloudy", "risk": "LOW", "humidity": 35, "wind": "9 mph"},
+    
+    "ORD-SFO": {"temp": 63, "conditions": "clear", "risk": "LOW", "humidity": 50, "wind": "13 mph"},
+    "ORD-LAX": {"temp": 70, "conditions": "sunny", "risk": "LOW", "humidity": 40, "wind": "8 mph"},
+    "ORD-NYC": {"temp": 57, "conditions": "overcast", "risk": "MEDIUM", "humidity": 68, "wind": "16 mph"},
+    "ORD-MIA": {"temp": 77, "conditions": "partly cloudy", "risk": "LOW", "humidity": 65, "wind": "10 mph"},
+    "ORD-LAS": {"temp": 82, "conditions": "clear", "risk": "LOW", "humidity": 28, "wind": "6 mph"},
+    "ORD-BOS": {"temp": 54, "conditions": "snow flurries", "risk": "HIGH", "humidity": 70, "wind": "25 mph"},
+    "ORD-DEN": {"temp": 59, "conditions": "clear", "risk": "LOW", "humidity": 32, "wind": "14 mph"},
+    
+    "MIA-SFO": {"temp": 66, "conditions": "clear", "risk": "LOW", "humidity": 55, "wind": "11 mph"},
+    "MIA-LAX": {"temp": 73, "conditions": "sunny", "risk": "LOW", "humidity": 45, "wind": "9 mph"},
+    "MIA-NYC": {"temp": 58, "conditions": "rain", "risk": "MEDIUM", "humidity": 72, "wind": "17 mph"},
+    "MIA-ORD": {"temp": 61, "conditions": "cloudy", "risk": "MEDIUM", "humidity": 58, "wind": "13 mph"},
+    "MIA-LAS": {"temp": 86, "conditions": "clear", "risk": "LOW", "humidity": 22, "wind": "4 mph"},
+    "MIA-BOS": {"temp": 53, "conditions": "overcast", "risk": "MEDIUM", "humidity": 68, "wind": "19 mph"},
+    "MIA-DEN": {"temp": 64, "conditions": "partly cloudy", "risk": "LOW", "humidity": 38, "wind": "12 mph"},
+    
+    "LAS-SFO": {"temp": 67, "conditions": "clear", "risk": "LOW", "humidity": 40, "wind": "8 mph"},
+    "LAS-LAX": {"temp": 74, "conditions": "sunny", "risk": "LOW", "humidity": 30, "wind": "6 mph"},
+    "LAS-NYC": {"temp": 59, "conditions": "partly cloudy", "risk": "LOW", "humidity": 55, "wind": "12 mph"},
+    "LAS-ORD": {"temp": 62, "conditions": "clear", "risk": "LOW", "humidity": 45, "wind": "10 mph"},
+    "LAS-MIA": {"temp": 79, "conditions": "sunny", "risk": "LOW", "humidity": 50, "wind": "8 mph"},
+    "LAS-BOS": {"temp": 56, "conditions": "cloudy", "risk": "MEDIUM", "humidity": 62, "wind": "15 mph"},
+    "LAS-DEN": {"temp": 65, "conditions": "clear", "risk": "LOW", "humidity": 25, "wind": "9 mph"},
+    
+    "BOS-SFO": {"temp": 64, "conditions": "partly cloudy", "risk": "LOW", "humidity": 58, "wind": "14 mph"},
+    "BOS-LAX": {"temp": 71, "conditions": "clear", "risk": "LOW", "humidity": 42, "wind": "10 mph"},
+    "BOS-NYC": {"temp": 56, "conditions": "overcast", "risk": "MEDIUM", "humidity": 70, "wind": "18 mph"},
+    "BOS-ORD": {"temp": 59, "conditions": "cloudy", "risk": "MEDIUM", "humidity": 65, "wind": "16 mph"},
+    "BOS-MIA": {"temp": 76, "conditions": "sunny", "risk": "LOW", "humidity": 60, "wind": "11 mph"},
+    "BOS-LAS": {"temp": 83, "conditions": "clear", "risk": "LOW", "humidity": 28, "wind": "7 mph"},
+    "BOS-DEN": {"temp": 61, "conditions": "partly cloudy", "risk": "LOW", "humidity": 40, "wind": "13 mph"},
+    
+    "DEN-SFO": {"temp": 66, "conditions": "clear", "risk": "LOW", "humidity": 35, "wind": "12 mph"},
+    "DEN-LAX": {"temp": 73, "conditions": "sunny", "risk": "LOW", "humidity": 25, "wind": "8 mph"},
+    "DEN-NYC": {"temp": 58, "conditions": "partly cloudy", "risk": "LOW", "humidity": 50, "wind": "15 mph"},
+    "DEN-ORD": {"temp": 61, "conditions": "clear", "risk": "LOW", "humidity": 45, "wind": "11 mph"},
+    "DEN-MIA": {"temp": 78, "conditions": "sunny", "risk": "LOW", "humidity": 55, "wind": "9 mph"},
+    "DEN-LAS": {"temp": 85, "conditions": "clear", "risk": "LOW", "humidity": 20, "wind": "6 mph"},
+    "DEN-BOS": {"temp": 57, "conditions": "overcast", "risk": "MEDIUM", "humidity": 62, "wind": "17 mph"}
+  },
+  "airport_codes": {
+    "Seattle": "SEA",
+    "New York": "JFK",
+    "San Francisco": "SFO", 
+    "Chicago": "ORD",
+    "Miami": "MIA",
+    "Las Vegas": "LAS",
+    "Boston": "BOS",
+    "Denver": "DEN"
+  },
+  "risk_recommendations": {
+    "LOW": "Good conditions for travel",
+    "MEDIUM": "Monitor weather updates, possible delays",
+    "HIGH": "Consider alternative travel dates or routes"
+  }
+}

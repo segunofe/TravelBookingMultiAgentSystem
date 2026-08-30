@@ -1,0 +1,465 @@
+{
+  "flights": {
+    "JFK-SEA": [
+      {
+        "airline": "Delta",
+        "flight": "DL123",
+        "price": 450,
+        "departure": "08:00",
+        "arrival": "11:30",
+        "duration": "5h 30m"
+      },
+      {
+        "airline": "United",
+        "flight": "UA789",
+        "price": 380,
+        "departure": "14:15",
+        "arrival": "17:45",
+        "duration": "5h 30m"
+      },
+      {
+        "airline": "Alaska",
+        "flight": "AS456",
+        "price": 420,
+        "departure": "19:30",
+        "arrival": "23:00",
+        "duration": "5h 30m"
+      }
+    ],
+    "JFK-SFO": [
+      {
+        "airline": "Delta",
+        "flight": "DL123",
+        "price": 450,
+        "departure": "08:00",
+        "arrival": "11:30",
+        "duration": "6h 30m"
+      },
+      {
+        "airline": "United",
+        "flight": "UA789",
+        "price": 380,
+        "departure": "14:15",
+        "arrival": "17:45",
+        "duration": "6h 30m"
+      },
+      {
+        "airline": "JetBlue",
+        "flight": "B6456",
+        "price": 420,
+        "departure": "19:30",
+        "arrival": "23:00",
+        "duration": "6h 30m"
+      }
+    ],
+    "JFK-LAX": [
+      {
+        "airline": "American",
+        "flight": "AA234",
+        "price": 520,
+        "departure": "09:30",
+        "arrival": "12:45",
+        "duration": "6h 15m"
+      },
+      {
+        "airline": "Delta",
+        "flight": "DL567",
+        "price": 480,
+        "departure": "15:20",
+        "arrival": "18:35",
+        "duration": "6h 15m"
+      },
+      {
+        "airline": "United",
+        "flight": "UA890",
+        "price": 510,
+        "departure": "21:10",
+        "arrival": "00:25+1",
+        "duration": "6h 15m"
+      }
+    ],
+    "JFK-ORD": [
+      {
+        "airline": "American",
+        "flight": "AA345",
+        "price": 280,
+        "departure": "07:45",
+        "arrival": "09:30",
+        "duration": "2h 45m"
+      },
+      {
+        "airline": "United",
+        "flight": "UA678",
+        "price": 260,
+        "departure": "13:15",
+        "arrival": "15:00",
+        "duration": "2h 45m"
+      },
+      {
+        "airline": "Delta",
+        "flight": "DL901",
+        "price": 290,
+        "departure": "18:40",
+        "arrival": "20:25",
+        "duration": "2h 45m"
+      }
+    ],
+    "JFK-MIA": [
+      {
+        "airline": "American",
+        "flight": "AA456",
+        "price": 380,
+        "departure": "08:20",
+        "arrival": "11:35",
+        "duration": "3h 15m"
+      },
+      {
+        "airline": "JetBlue",
+        "flight": "B6789",
+        "price": 350,
+        "departure": "14:50",
+        "arrival": "18:05",
+        "duration": "3h 15m"
+      },
+      {
+        "airline": "Delta",
+        "flight": "DL012",
+        "price": 400,
+        "departure": "20:15",
+        "arrival": "23:30",
+        "duration": "3h 15m"
+      }
+    ],
+    "JFK-LAS": [
+      {
+        "airline": "JetBlue",
+        "flight": "B6123",
+        "price": 320,
+        "departure": "09:00",
+        "arrival": "12:15",
+        "duration": "5h 15m"
+      },
+      {
+        "airline": "Delta",
+        "flight": "DL345",
+        "price": 340,
+        "departure": "16:30",
+        "arrival": "19:45",
+        "duration": "5h 15m"
+      },
+      {
+        "airline": "American",
+        "flight": "AA678",
+        "price": 360,
+        "departure": "22:00",
+        "arrival": "01:15+1",
+        "duration": "5h 15m"
+      }
+    ],
+    "JFK-BOS": [
+      {
+        "airline": "JetBlue",
+        "flight": "B6234",
+        "price": 180,
+        "departure": "07:30",
+        "arrival": "08:45",
+        "duration": "1h 15m"
+      },
+      {
+        "airline": "American",
+        "flight": "AA567",
+        "price": 160,
+        "departure": "12:20",
+        "arrival": "13:35",
+        "duration": "1h 15m"
+      },
+      {
+        "airline": "Delta",
+        "flight": "DL890",
+        "price": 190,
+        "departure": "17:50",
+        "arrival": "19:05",
+        "duration": "1h 15m"
+      }
+    ],
+    "JFK-DEN": [
+      {
+        "airline": "United",
+        "flight": "UA345",
+        "price": 380,
+        "departure": "08:45",
+        "arrival": "11:30",
+        "duration": "4h 45m"
+      },
+      {
+        "airline": "Frontier",
+        "flight": "F9678",
+        "price": 280,
+        "departure": "14:20",
+        "arrival": "17:05",
+        "duration": "4h 45m"
+      },
+      {
+        "airline": "American",
+        "flight": "AA901",
+        "price": 350,
+        "departure": "19:15",
+        "arrival": "22:00",
+        "duration": "4h 45m"
+      }
+    ],
+
+    "LAX-SFO": [
+      {
+        "airline": "United",
+        "flight": "UA456",
+        "price": 150,
+        "departure": "08:15",
+        "arrival": "09:30",
+        "duration": "1h 15m"
+      },
+      {
+        "airline": "Alaska",
+        "flight": "AS789",
+        "price": 130,
+        "departure": "13:45",
+        "arrival": "15:00",
+        "duration": "1h 15m"
+      },
+      {
+        "airline": "Southwest",
+        "flight": "WN012",
+        "price": 140,
+        "departure": "18:20",
+        "arrival": "19:35",
+        "duration": "1h 15m"
+      }
+    ],
+    "LAX-NYC": [
+      {
+        "airline": "American",
+        "flight": "AA456",
+        "price": 520,
+        "departure": "09:30",
+        "arrival": "17:45",
+        "duration": "5h 15m"
+      },
+      {
+        "airline": "JetBlue",
+        "flight": "B6321",
+        "price": 350,
+        "departure": "16:45",
+        "arrival": "01:00+1",
+        "duration": "5h 15m"
+      },
+      {
+        "airline": "Delta",
+        "flight": "DL654",
+        "price": 480,
+        "departure": "22:10",
+        "arrival": "06:25+1",
+        "duration": "5h 15m"
+      }
+    ],
+    "LAX-ORD": [
+      {
+        "airline": "American",
+        "flight": "AA567",
+        "price": 320,
+        "departure": "07:50",
+        "arrival": "13:15",
+        "duration": "4h 25m"
+      },
+      {
+        "airline": "United",
+        "flight": "UA890",
+        "price": 300,
+        "departure": "14:30",
+        "arrival": "19:55",
+        "duration": "4h 25m"
+      },
+      {
+        "airline": "Southwest",
+        "flight": "WN123",
+        "price": 280,
+        "departure": "20:05",
+        "arrival": "01:30+1",
+        "duration": "4h 25m"
+      }
+    ],
+    "LAX-MIA": [
+      {
+        "airline": "American",
+        "flight": "AA678",
+        "price": 450,
+        "departure": "08:40",
+        "arrival": "16:20",
+        "duration": "4h 40m"
+      },
+      {
+        "airline": "United",
+        "flight": "UA234",
+        "price": 420,
+        "departure": "15:15",
+        "arrival": "22:55",
+        "duration": "4h 40m"
+      },
+      {
+        "airline": "Delta",
+        "flight": "DL567",
+        "price": 480,
+        "departure": "21:25",
+        "arrival": "05:05+1",
+        "duration": "4h 40m"
+      }
+    ],
+    "LAX-LAS": [
+      {
+        "airline": "Southwest",
+        "flight": "WN234",
+        "price": 120,
+        "departure": "09:20",
+        "arrival": "10:35",
+        "duration": "1h 15m"
+      },
+      {
+        "airline": "Spirit",
+        "flight": "NK567",
+        "price": 90,
+        "departure": "14:50",
+        "arrival": "16:05",
+        "duration": "1h 15m"
+      },
+      {
+        "airline": "American",
+        "flight": "AA890",
+        "price": 140,
+        "departure": "19:30",
+        "arrival": "20:45",
+        "duration": "1h 15m"
+      }
+    ],
+    "LAX-BOS": [
+      {
+        "airline": "JetBlue",
+        "flight": "B6345",
+        "price": 420,
+        "departure": "08:30",
+        "arrival": "17:15",
+        "duration": "5h 45m"
+      },
+      {
+        "airline": "American",
+        "flight": "AA678",
+        "price": 450,
+        "departure": "15:40",
+        "arrival": "00:25+1",
+        "duration": "5h 45m"
+      },
+      {
+        "airline": "Delta",
+        "flight": "DL901",
+        "price": 480,
+        "departure": "21:20",
+        "arrival": "06:05+1",
+        "duration": "5h 45m"
+      }
+    ],
+    "LAX-DEN": [
+      {
+        "airline": "United",
+        "flight": "UA456",
+        "price": 250,
+        "departure": "09:10",
+        "arrival": "12:35",
+        "duration": "2h 25m"
+      },
+      {
+        "airline": "Frontier",
+        "flight": "F9789",
+        "price": 180,
+        "departure": "16:25",
+        "arrival": "19:50",
+        "duration": "2h 25m"
+      },
+      {
+        "airline": "Southwest",
+        "flight": "WN345",
+        "price": 220,
+        "departure": "20:45",
+        "arrival": "00:10+1",
+        "duration": "2h 25m"
+      }
+    ]
+  },
+  "airlines": {
+    "Delta": {
+      "code": "DL",
+      "rating": 4.2,
+      "baggage_policy": "1 free carry-on, checked bag $30"
+    },
+    "American": {
+      "code": "AA",
+      "rating": 4.0,
+      "baggage_policy": "1 free carry-on, checked bag $30"
+    },
+    "United": {
+      "code": "UA",
+      "rating": 3.9,
+      "baggage_policy": "1 free carry-on, checked bag $35"
+    },
+    "JetBlue": {
+      "code": "B6",
+      "rating": 4.1,
+      "baggage_policy": "1 free carry-on, checked bag $35"
+    },
+    "Southwest": {
+      "code": "WN",
+      "rating": 4.3,
+      "baggage_policy": "2 free checked bags"
+    },
+    "Alaska": {
+      "code": "AS",
+      "rating": 4.4,
+      "baggage_policy": "1 free carry-on, checked bag $30"
+    },
+    "Spirit": {
+      "code": "NK",
+      "rating": 3.2,
+      "baggage_policy": "Carry-on $35, checked bag $30"
+    },
+    "Frontier": {
+      "code": "F9",
+      "rating": 3.1,
+      "baggage_policy": "Carry-on $30, checked bag $25"
+    }
+  },
+  "airport_codes": {
+    "Seattle": "SEA",
+    "New York": "JFK",
+    "San Francisco": "SFO",
+    "Chicago": "ORD",
+    "Miami": "MIA",
+    "Las Vegas": "LAS",
+    "Boston": "BOS",
+    "Denver": "DEN"
+  },
+  "booking_classes": {
+    "economy": {
+      "multiplier": 1.0,
+      "amenities": ["Standard seat", "Basic meal"]
+    },
+    "premium_economy": {
+      "multiplier": 1.4,
+      "amenities": ["Extra legroom", "Priority boarding", "Enhanced meal"]
+    },
+    "business": {
+      "multiplier": 2.8,
+      "amenities": ["Lie-flat seat", "Premium meal", "Lounge access"]
+    },
+    "first": {
+      "multiplier": 4.2,
+      "amenities": ["Private suite", "Gourmet dining", "Concierge service"]
+    }
+  }
+}

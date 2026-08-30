@@ -1,0 +1,152 @@
+{
+  "destinations": {
+    "Seattle": {
+      "region": "Pacific Northwest",
+      "climate": "Temperate oceanic",
+      "peak_season": "June-September",
+      "avg_cost_per_day": 200,
+      "recommended_duration": "3-5 days",
+      "attractions": ["Space Needle", "Pike Place Market", "Museum of Pop Culture", "Chihuly Garden and Glass", "Kerry Park"],
+      "transportation": "Light rail from airport",
+      "weather_considerations": "Rain likely, pack waterproof clothing"
+    },
+    "New York": {
+      "region": "Northeast",
+      "climate": "Humid continental",
+      "peak_season": "April-June, September-November",
+      "avg_cost_per_day": 300,
+      "recommended_duration": "4-7 days",
+      "attractions": ["Central Park", "Times Square", "Statue of Liberty", "Brooklyn Bridge", "High Line"],
+      "transportation": "Subway system extensive",
+      "weather_considerations": "Seasonal variations, check forecast"
+    },
+    "San Francisco": {
+      "region": "Northern California",
+      "climate": "Mediterranean",
+      "peak_season": "September-November",
+      "avg_cost_per_day": 250,
+      "recommended_duration": "3-5 days",
+      "attractions": ["Golden Gate Bridge", "Alcatraz", "Fisherman's Wharf", "Lombard Street", "Chinatown"],
+      "transportation": "Cable cars and public transit",
+      "weather_considerations": "Cool summers, layers recommended"
+    },
+    "Chicago": {
+      "region": "Midwest",
+      "climate": "Continental",
+      "peak_season": "May-September",
+      "avg_cost_per_day": 180,
+      "recommended_duration": "3-4 days",
+      "attractions": ["Millennium Park", "Navy Pier", "Art Institute", "Willis Tower", "Riverwalk"],
+      "transportation": "L train system",
+      "weather_considerations": "Windy city, dress warmly in winter"
+    },
+    "Miami": {
+      "region": "Southeast",
+      "climate": "Tropical",
+      "peak_season": "December-April",
+      "avg_cost_per_day": 220,
+      "recommended_duration": "4-6 days",
+      "attractions": ["South Beach", "Art Deco District", "Everglades", "Wynwood Walls", "Bayside Marketplace"],
+      "transportation": "Metromover and buses",
+      "weather_considerations": "Hurricane season June-November"
+    },
+    "Las Vegas": {
+      "region": "Southwest",
+      "climate": "Desert",
+      "peak_season": "March-May, September-November",
+      "avg_cost_per_day": 160,
+      "recommended_duration": "3-4 days",
+      "attractions": ["The Strip", "Fremont Street", "Red Rock Canyon", "Hoover Dam", "Bellagio Fountains"],
+      "transportation": "Monorail and taxis",
+      "weather_considerations": "Extremely hot summers, mild winters"
+    },
+    "Boston": {
+      "region": "Northeast",
+      "climate": "Continental",
+      "peak_season": "April-October",
+      "avg_cost_per_day": 240,
+      "recommended_duration": "3-4 days",
+      "attractions": ["Freedom Trail", "Harvard University", "Fenway Park", "USS Constitution", "Boston Tea Party Ships"],
+      "transportation": "T subway system",
+      "weather_considerations": "Cold winters, pleasant summers"
+    },
+    "Denver": {
+      "region": "Mountain West",
+      "climate": "Semi-arid",
+      "peak_season": "June-September",
+      "avg_cost_per_day": 170,
+      "recommended_duration": "4-5 days",
+      "attractions": ["Rocky Mountain National Park", "Red Rocks Amphitheatre", "Denver Art Museum", "16th Street Mall", "Union Station"],
+      "transportation": "Light rail and buses",
+      "weather_considerations": "High altitude, sun protection needed"
+    }
+  },
+  "cost_data": {
+    "Seattle": {"flight": 400, "hotel_mid": 150, "hotel_budget": 80, "hotel_luxury": 300, "daily_expenses": 100},
+    "New York": {"flight": 500, "hotel_mid": 200, "hotel_budget": 120, "hotel_luxury": 400, "daily_expenses": 120},
+    "San Francisco": {"flight": 450, "hotel_mid": 180, "hotel_budget": 100, "hotel_luxury": 350, "daily_expenses": 110},
+    "Chicago": {"flight": 350, "hotel_mid": 120, "hotel_budget": 70, "hotel_luxury": 250, "daily_expenses": 90},
+    "Miami": {"flight": 600, "hotel_mid": 160, "hotel_budget": 90, "hotel_luxury": 320, "daily_expenses": 105},
+    "Las Vegas": {"flight": 380, "hotel_mid": 100, "hotel_budget": 60, "hotel_luxury": 280, "daily_expenses": 85},
+    "Boston": {"flight": 420, "hotel_mid": 170, "hotel_budget": 95, "hotel_luxury": 330, "daily_expenses": 115},
+    "Denver": {"flight": 320, "hotel_mid": 130, "hotel_budget": 75, "hotel_luxury": 260, "daily_expenses": 95}
+  },
+  "itinerary_templates": {
+    "Seattle": {
+      "day_1": ["Arrive and check in", "Pike Place Market visit", "Waterfront walk"],
+      "day_2": ["Space Needle and Seattle Center", "Chihuly Garden and Glass", "Queen Anne neighborhood"],
+      "day_3": ["Ferry to Bainbridge Island", "Downtown exploration", "Pioneer Square"],
+      "day_4": ["Museum of Pop Culture", "Capitol Hill district", "Kerry Park viewpoint"],
+      "day_5": ["Day trip to Snoqualmie Falls", "Fremont neighborhood", "Departure prep"]
+    },
+    "New York": {
+      "day_1": ["Arrive and check in", "Times Square orientation", "Broadway show"],
+      "day_2": ["Central Park", "Metropolitan Museum", "Upper East Side"],
+      "day_3": ["Statue of Liberty", "Ellis Island", "Financial District"],
+      "day_4": ["Brooklyn Bridge walk", "DUMBO area", "Brooklyn Heights"],
+      "day_5": ["High Line park", "Chelsea Market", "Meatpacking District"]
+    },
+    "San Francisco": {
+      "day_1": ["Arrive and check in", "Fisherman's Wharf", "Pier 39"],
+      "day_2": ["Golden Gate Bridge", "Sausalito ferry", "Marina District"],
+      "day_3": ["Alcatraz Island tour", "North Beach", "Lombard Street"],
+      "day_4": ["Chinatown", "Union Square shopping", "Cable car rides"],
+      "day_5": ["Napa Valley day trip", "Wine tasting", "Return to city"]
+    },
+    "Chicago": {
+      "day_1": ["Arrive and check in", "Millennium Park", "Cloud Gate sculpture"],
+      "day_2": ["Art Institute of Chicago", "Grant Park", "Museum Campus"],
+      "day_3": ["Navy Pier", "Chicago Riverwalk", "Architecture boat tour"],
+      "day_4": ["Lincoln Park Zoo", "Old Town", "Second City comedy show"],
+      "day_5": ["Willis Tower Skydeck", "Shopping on Magnificent Mile", "Departure"]
+    },
+    "Miami": {
+      "day_1": ["Arrive and check in", "South Beach", "Art Deco walking tour"],
+      "day_2": ["Wynwood Walls", "Design District", "Little Havana"],
+      "day_3": ["Everglades National Park day trip", "Airboat tour"],
+      "day_4": ["Key Biscayne", "Vizcaya Museum", "Coconut Grove"],
+      "day_5": ["Bayside Marketplace", "Miami Beach boardwalk", "Departure"]
+    },
+    "Las Vegas": {
+      "day_1": ["Arrive and check in", "The Strip exploration", "Bellagio Fountains"],
+      "day_2": ["Red Rock Canyon", "Valley of Fire State Park"],
+      "day_3": ["Hoover Dam tour", "Lake Mead", "Fremont Street Experience"],
+      "day_4": ["Shows and entertainment", "Casino experiences", "Fine dining"],
+      "day_5": ["Shopping at Forum Shops", "Pool time", "Departure"]
+    },
+    "Boston": {
+      "day_1": ["Arrive and check in", "Freedom Trail start", "Boston Common"],
+      "day_2": ["Harvard University", "MIT campus", "Cambridge exploration"],
+      "day_3": ["USS Constitution", "Charlestown Navy Yard", "North End"],
+      "day_4": ["Fenway Park tour", "Back Bay", "Newbury Street shopping"],
+      "day_5": ["Boston Tea Party Ships", "Quincy Market", "Departure"]
+    },
+    "Denver": {
+      "day_1": ["Arrive and check in", "16th Street Mall", "Union Station"],
+      "day_2": ["Rocky Mountain National Park day trip", "Trail Ridge Road"],
+      "day_3": ["Red Rocks Amphitheatre", "Morrison", "Golden"],
+      "day_4": ["Denver Art Museum", "RiNo Art District", "Coors Brewery tour"],
+      "day_5": ["Washington Park", "Cherry Creek shopping", "Departure"]
+    }
+  }
+}

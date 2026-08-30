@@ -1,0 +1,5 @@
+# Flight Manager Agent Dependencies
+# Note: Strands Agents SDK will be provided by Lambda Layer
+
+boto3>=1.34.0
+botocore>=1.34.0

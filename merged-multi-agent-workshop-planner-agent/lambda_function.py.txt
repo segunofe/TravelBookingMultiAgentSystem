@@ -1,0 +1,305 @@
+#merged-multi-agent-workshop-planner-agent
+
+#!/usr/bin/env python3
+# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy of
+# this software and associated documentation files (the "Software"), to deal in
+# the Software without restriction, including without limitation the rights to
+# use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+# the Software, and to permit persons to whom the Software is furnished to do so.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+# FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+# COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+# IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+# CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+"""
+Bulletproof Planner Agent - Single agent instance for all choreography coordination
+"""
+
+import json
+import os
+import uuid
+import boto3
+from datetime import datetime
+from typing import Dict, Any
+from strands import Agent, tool, ToolContext
+from strands.session.s3_session_manager import S3SessionManager
+
+# Environment variables
+EVENT_BUS_NAME = os.environ.get('EVENT_BUS_NAME', 'multi-agent-bus')
+STACK_NAME = os.environ.get('STACK_NAME', 'workshop')
+SESSION_BUCKET = os.environ.get('SESSION_BUCKET', 'multi-agent-workshop-sessions-us-east-2')
+AWS_REGION = os.environ.get('AWS_DEFAULT_REGION', 'us-east-2')
+
+# AWS clients
+eventbridge = boto3.client('events')
+
+class PlannerTools:
+    """Unified tools for all planner coordination tasks"""
+    
+    def __init__(self, booking_id: str):
+        self.booking_id = booking_id
+    
+    @tool(name="publish_event", context=True)
+    def publish_event(self, event_type: str, event_data: Dict[str, Any], tool_context: ToolContext) -> Dict[str, Any]:
+        """Publish choreography events to coordinate with other agents"""
+        try:
+            print(f"[tools] bookingID={self.booking_id} publish_event -> event_type={event_type}")
+            
+            response = eventbridge.put_events(
+                Entries=[{
+                    'Source': 'workshop.planner-agent',
+                    'DetailType': event_type,
+                    'Detail': json.dumps(event_data),
+                    'EventBusName': EVENT_BUS_NAME
+                }]
+            )
+            
+            event_id = response['Entries'][0].get('EventId')
+            print(f"[action] bookingID={self.booking_id} emitted_event={event_type} event_id={event_id}")
+            
+            result = {
+                'status': 'success',
+                'event_type': event_type,
+                'event_id': event_id
+            }
+            return result
+            
+        except Exception as e:
+            print(f"[action] bookingID={self.booking_id} failed_event={event_type} error={str(e)}")
+            return {'status': 'error', 'message': str(e)}
+
+# Global agent instance - truly global, reused across ALL invocations
+_global_agent = None
+
+def get_global_planner_agent() -> Agent:
+    """Get or create a single global planner agent instance - called only once per Lambda container"""
+    global _global_agent
+    
+    if _global_agent is None:
+        print(f"[event] creating global planner agent instance (once per container)")
+        
+        # Import and configure Claude Sonnet 4 with cross-region inference
+        from strands.models.bedrock import BedrockModel
+        
+        # Create model with cross-region inference profile
+        model = BedrockModel(
+            model_id="global.anthropic.claude-sonnet-4-6"
+        )
+        
+        # Create a dummy tools instance for initial agent creation
+        dummy_tools = PlannerTools("dummy")
+        
+        # Create unified agent with Claude Sonnet 4 - NO session manager yet
+        _global_agent = Agent(
+            agent_id="global-planner-coordinator",  # Global agent ID
+            name="planner-agent",
+            model=model,
+            tools=[dummy_tools.publish_event],
+            system_prompt="""You are an intelligent travel booking planner that coordinates multi-agent workflows through events.
+
+CAPABILITIES:
+- Process initial travel requests and extract details
+- Coordinate with Weather and Flight agents via events
+- Make booking decisions ONLY when you have COMPLETE data
+- Handle human review escalation for high-risk scenarios
+- Process human approval decisions
+
+DECISION CRITERIA (ONLY AFTER RECEIVING BOTH WEATHER AND FLIGHT DATA):
+- AUTO-APPROVE: Weather risk is LOW AND flights are available within budget
+- HUMAN REVIEW: Weather risk is MEDIUM/HIGH OR no flights within budget OR any concerns
+
+EVENT TYPES TO PUBLISH:
+- DatesFinalized: After processing initial request (triggers Weather + Flight agents)
+- FlightBookingApproved: For auto-approved bookings (followed by FinalBookingCompleted)
+- HumanReviewRequired: For high-risk scenarios needing manual review
+- FinalBookingCompleted: Final success event after booking is completed
+- FinalBookingRejected: Final event when booking is rejected
+
+BULLETPROOF WORKFLOW PHASES:
+1. INITIAL REQUEST: Extract details, publish DatesFinalized event, WAIT for responses
+2. DATA COLLECTION PHASE: 
+   - Store weather analysis when WeatherAnalysisCompleted is received
+   - Store flight data when FlightSearchCompleted is received
+   - DO NOT make any decisions until BOTH are received
+3. DECISION PHASE (ONLY when you have BOTH weather AND flight data):
+   - Analyze complete dataset
+   - Make ONE decision: AUTO-APPROVE or HUMAN REVIEW
+   - Publish appropriate event based on decision
+4. AUTO-APPROVE PATH: Publish FlightBookingApproved, then FinalBookingCompleted
+5. HUMAN REVIEW PATH: Publish HumanReviewRequired, then STOP and WAIT
+6. HUMAN DECISION RECEIVED: Process HumanApprovalDecision event:
+   - IF decision is "approved" → Publish FinalBookingCompleted
+   - IF decision is "rejected" → Publish FinalBookingRejected
+
+ABSOLUTE CRITICAL RULES - NO EXCEPTIONS:
+- ALWAYS check conversation history FIRST to see what data you already have
+- NEVER make booking decisions with incomplete data
+- NEVER publish HumanReviewRequired without BOTH weather AND flight data
+- NEVER publish multiple HumanReviewRequired events for the same booking
+- NEVER auto-complete after publishing HumanReviewRequired
+- ALWAYS wait for BOTH WeatherAnalysisCompleted AND FlightSearchCompleted before deciding
+- If you receive only weather OR only flight data, acknowledge receipt but DO NOT decide
+- Each booking ID gets exactly ONE decision event (HumanReviewRequired OR FlightBookingApproved)
+- If already escalated to human review, ONLY respond to HumanApprovalDecision events
+- If you already published a decision event for this booking, acknowledge but take NO action
+
+DATA COMPLETENESS CHECK:
+Before making ANY booking decision, verify you have:
+1. Weather analysis with risk level (LOW/MEDIUM/HIGH) - check conversation history
+2. Flight search results with availability and pricing - check conversation history  
+3. Both datasets are for the same booking ID
+4. ALWAYS review your conversation history to see what data you already have
+5. If you already made a decision for this booking ID, DO NOT make another one
+
+HUMAN APPROVAL EVENT FORMAT:
+- Source: "workshop.human-review"
+- DetailType: "HumanApprovalDecision"
+- Detail contains: bookingID, decision ("approved" or "rejected"), reviewer, timestamp
+
+Always use the publish_event tool to coordinate with other agents. Maintain conversation context across all interactions. NEVER rush to decisions - complete data is mandatory."""
+        )
+        
+        print(f"[event] global planner agent ready (container-level singleton)")
+    
+    return _global_agent
+
+def setup_agent_session(agent: Agent, booking_id: str):
+    """Setup session manager for the agent for a specific booking"""
+    session_manager = S3SessionManager(
+        session_id=booking_id,
+        bucket=SESSION_BUCKET,
+        prefix="planner-sessions",
+        region_name=AWS_REGION
+    )
+    
+    # Update agent with session manager for this booking
+    agent.session_manager = session_manager
+    agent.agent_id = f"planner-coordinator-{booking_id}"  # Unique agent ID per booking
+    print(f"[event] bookingID={booking_id} session manager configured")
+
+def extract_event_data(event: Dict[str, Any]) -> Dict[str, Any]:
+    """Extract data from event regardless of format (EventBridge vs direct)"""
+    # Handle EventBridge format (data in 'detail' field) vs direct invocation
+    if 'detail' in event and isinstance(event['detail'], str):
+        # EventBridge sends detail as JSON string
+        return json.loads(event['detail'])
+    elif 'detail' in event and isinstance(event['detail'], dict):
+        # EventBridge sends detail as dict
+        return event['detail']
+    else:
+        # Direct invocation - data at root level
+        return event
+
+def process_with_intelligent_agent(event: Dict[str, Any]) -> Dict[str, Any]:
+    """Process any event with intelligent agent - let the agent decide everything"""
+    
+    # Extract event data and booking ID
+    detail = extract_event_data(event)
+    booking_id = detail.get('bookingID', str(uuid.uuid4()))
+    
+    print(f"[event] bookingID={booking_id} processing event with intelligent agent")
+    
+    # Get the global agent instance (created once per container)
+    agent = get_global_planner_agent()
+    
+    # Setup session manager for this specific booking
+    setup_agent_session(agent, booking_id)
+    
+    # Add tools for this specific booking ID
+    tools = PlannerTools(booking_id)
+    agent.tools = [tools.publish_event]
+    
+    # Let the agent figure out what to do based on the raw event data
+    prompt = f"""
+    EVENT RECEIVED - Analyze and take appropriate action:
+    
+    Raw Event Data:
+    {json.dumps(event, indent=2)}
+    
+    Extracted Details:
+    {json.dumps(detail, indent=2)}
+    
+    INSTRUCTIONS:
+    Analyze this event and determine what action to take based on your role as a travel booking planner.
+    
+    Look at the event structure and content to understand:
+    - Is this a new travel request that needs coordination?
+    - Is this weather analysis results that need to be stored?
+    - Is this flight search results that require a booking decision?
+    - Is this some other type of event?
+    
+    Take the appropriate action based on your analysis:
+    - For new requests: publish DatesFinalized event
+    - For weather results: acknowledge and store in memory
+    - For flight results: make booking decision using stored weather data, then:
+      * If AUTO-APPROVE: publish FlightBookingApproved, then FinalBookingCompleted
+      * If HUMAN REVIEW: publish HumanReviewRequired (final event comes after human decision)
+    - For human decisions: publish FinalBookingCompleted (approved) or FinalBookingRejected (rejected)
+    - For unknown events: acknowledge receipt
+    
+    IMPORTANT: Always emit a final completion event when a booking workflow is finished.
+    Use your intelligence and session memory to determine the right course of action.
+    """
+    
+    # Process with the intelligent agent
+    try:
+        print("=" * 80)
+        print(f"[PLANNER AGENT] bookingID={booking_id} - Agent Response START")
+        print("=" * 80)
+        response = agent(prompt)
+        print()  # Line break after response
+        print("=" * 80)
+        print(f"[PLANNER AGENT] bookingID={booking_id} - Agent Response END")
+        print("=" * 80)
+        
+        return {
+            'statusCode': 200,
+            'body': json.dumps({
+                'message': 'Event processed by intelligent agent',
+                'booking_id': booking_id,
+                'status': 'completed',
+                'intelligent_processing': True,
+                'response': str(response)
+            })
+        }
+        
+    except Exception as e:
+        print(f"[event] bookingID={booking_id} intelligent agent processing failed: {str(e)}")
+        return {
+            'statusCode': 500,
+            'body': json.dumps({
+                'error': str(e),
+                'booking_id': booking_id,
+                'message': 'Intelligent agent processing failed'
+            })
+        }
+
+def lambda_handler(event, context):
+    """Main Lambda handler - truly intelligent and simple"""
+    try:
+        # Extract booking ID for consistent logging
+        detail = extract_event_data(event)
+        booking_id = detail.get('bookingID', 'unknown')
+        print(f"[event] bookingID={booking_id} planner agent received event")
+        
+        # No event type detection - let the agent figure it out!
+        return process_with_intelligent_agent(event)
+            
+    except Exception as e:
+        print(f"[event] bookingID=unknown planner agent error: {str(e)}")
+        import traceback
+        traceback.print_exc()
+        
+        return {
+            'statusCode': 500,
+            'body': json.dumps({
+                'error': str(e),
+                'message': 'Planner agent error'
+            })
+        }
+
