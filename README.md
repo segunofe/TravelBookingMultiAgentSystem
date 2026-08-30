@@ -6,7 +6,7 @@ Interesting! I successfully integrated the **Hotel Agent** to book an hotel for 
 
 <img width="1893" height="586" alt="image" src="https://github.com/user-attachments/assets/1f2f597c-67f9-4152-b6c7-28a96aab5498" />
 
-Be
+
 
 
 <img width="975" height="279" alt="image" src="https://github.com/user-attachments/assets/fee9eb86-c32d-4ddf-a405-93e16b509614" />
