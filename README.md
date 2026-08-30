@@ -176,12 +176,6 @@ This gives the same end-to-end capability as the choreography flow, but with cen
 
 <img width="1462" height="752" alt="image" src="https://github.com/user-attachments/assets/d8bc6fe8-0e35-4ad7-8612-0a5e95affbe6" />
 
-
-
-
-
-
-
 ---
 
 ## Key Takeaways
@@ -191,3 +185,10 @@ This gives the same end-to-end capability as the choreography flow, but with cen
 - SQS + EventBridge enables a clean **human-in-the-loop** pattern for high-risk decisions without blocking the rest of the system.
 - A catch-all EventBridge rule feeding CloudWatch Logs gives a simple, centralized audit trail across all agents.
 - The same workflow can alternatively be run as a **Step Functions orchestration** for centralized control and visibility, trading loose coupling for a single source of truth on workflow state.
+
+## Links to complete project
+
+https://catalog.us-east-1.prod.workshops.aws/event/dashboard/en-US/workshop
+https://catalog.us-east-1.prod.workshops.aws/event/dashboard/en-US/workshop/module-1-choreography
+https://catalog.us-east-1.prod.workshops.aws/event/dashboard/en-US/workshop/module-2-orchestration
+https://catalog.us-east-1.prod.workshops.aws/event/dashboard/en-US/workshop/module-3-observability
