@@ -1,6 +1,6 @@
 # Multi-Agent AI Architecture on AWS Serverless — Travel Booking
 
-A serverless, event-driven multi-agent system built on **AWS Lambda**, **Amazon EventBridge**, **Amazon SQS**, and **AWS Step Functions**. The system automates a travel-booking workflow using a **Planner Agent**, **Weather Agent**, and **Flight Manager Agent**, with a human-in-the-loop step for high-risk bookings. 
+A serverless, event-driven multi-agent system built on **AWS Lambda**, **Amazon EventBridge**, **Amazon SQS**, and **AWS Step Functions**. The system automates a travel-booking workflow using a **Planner Agent**, **Weather Agent**, **Flight Manager Agent**, and **Hotel Agent**, with a human-in-the-loop step for high-risk bookings. 
 
 Interesting! I successfully integrated the **Hotel Agent** to book an hotel for the trip, without disturbing the other agents.
 
