@@ -64,6 +64,9 @@ Resources already provisioned by CloudFormation: the custom event bus, the three
 7. **`HumanApprovalRule`** — routes `HumanApprovalDecision` events (source `workshop.human-review`) back to the Planner to close the loop after a human approves or rejects a booking.
 8. **`CatchAllEventsRule`** — captures every event from all five sources and streams them to a CloudWatch Logs group (`/aws/events/multi-agent-workshop`) for observability and debugging.
 
+9. <img width="1866" height="836" alt="image" src="https://github.com/user-attachments/assets/2dc6f111-b4e5-4060-b755-63745154df9f" />
+
+
 ### Rules created
 
 | Rule | Source → Detail-Type | Target |
